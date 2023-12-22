@@ -29,7 +29,7 @@ export class NoteFormComponent implements OnInit {
   ngOnInit(): void {
     // console.log('first');
     this.noteForm = this.formBuilder.group({
-      id: 1,
+      id: new Date().getTime(),
       title: ['', Validators.required],
       content: [''],
     });
@@ -40,6 +40,9 @@ export class NoteFormComponent implements OnInit {
       return;
     }
     const note: Note = this.noteForm.value;
+    this.noteService.createNote(note);
+
+    
     this.noteForm.reset();
   }
 }
