@@ -12,10 +12,6 @@ import { CommonModule } from '@angular/common';
 })
 export class NoteListComponent implements OnInit {
   notes: Note[] = [];
-
-  
-  // isEditMode : boolean = false;
-
   @Output() selectedNote = new EventEmitter<Note>();
 
   constructor(private noteService: NoteService) {}
@@ -26,10 +22,13 @@ export class NoteListComponent implements OnInit {
     });
   }
 
+  //Edit Note
   editNote(note: Note): void {
     this.selectedNote.emit(note);
-    this.noteService.setEditable(true)
+    this.noteService.setEditable(true);
   }
+
+  //Delete Note
   deleteNote(id: Number): void {
     this.noteService.deleteNote(id);
   }

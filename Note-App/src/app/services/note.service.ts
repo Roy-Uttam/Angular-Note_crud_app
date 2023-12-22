@@ -6,19 +6,15 @@ import { Note } from '../interfaces/note';
 })
 export class NoteService {
   private notes: Note[] = [];
-
   private noteSubject = new BehaviorSubject<Note[]>([]);
-
-
   private isEdit = new BehaviorSubject<boolean>(false);
 
-  getEditable(){
+  getEditable() {
     return this.isEdit.asObservable();
-
   }
 
-  setEditable(value:boolean){
-    this.isEdit.next(value)
+  setEditable(value: boolean) {
+    this.isEdit.next(value);
   }
 
   constructor() {}
@@ -28,9 +24,8 @@ export class NoteService {
   }
 
   updateNote(updatedNote: Note): void {
-    const index = this.notes.findIndex((note)=> note.id=== updatedNote.id);
-
-    if(index!== -1){
+    const index = this.notes.findIndex((note) => note.id === updatedNote.id);
+    if (index !== -1) {
       this.notes[index] = updatedNote;
       this.noteSubject.next(this.notes);
     }
@@ -41,9 +36,9 @@ export class NoteService {
     this.notes.push(note);
     this.noteSubject.next(this.notes);
   }
+
   deleteNote(id: Number): void {
     this.notes = this.notes.filter((note) => note.id !== id);
-
     this.noteSubject.next(this.notes);
   }
 }

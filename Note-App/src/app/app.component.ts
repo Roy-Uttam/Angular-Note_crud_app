@@ -22,11 +22,9 @@ import { Note } from './interfaces/note';
 })
 
 export class AppComponent {
+  selectedNote!: Note;
 
-  selectedNote! : Note;
-
-  selectNote(note:Note){
+  selectNote(note: Note) {
     this.selectedNote = note;
-
   }
 }
