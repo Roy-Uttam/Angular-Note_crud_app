@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Note } from './interfaces/note';
 
 @Component({
   selector: 'app-root',
@@ -21,5 +22,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 
 export class AppComponent {
-  title = 'Note-App';
+
+  selectedNote! : Note;
+
+  selectNote(note:Note){
+    this.selectedNote = note;
+
+  }
 }
